@@ -10,8 +10,8 @@ jobs:
            git config --global user.email "asepmlnaaa@gmail.com"
            git clone https://github.com/nadinsylaa/Gengkapak-Kernel Gengkapak
            cd Gengkapak
-           chmod a+x gettools.sh
-           ./gettools.sh
+           wget https://raw.githubusercontent.com/nadinsylaa/MyScripts/memerlin/kernel.sh
+           bash kernel.sh
 workflows:
   version: 2.1
   cooking:
