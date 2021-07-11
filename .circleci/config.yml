@@ -1,19 +1,11 @@
 version: 2.1
 jobs:
-  compile:
-   docker:
-      - image: bryanhafidz/bryan-docker:0x02
-   steps:
-      - run:
-          command: |
-           git config --global user.name "nadinsylaa"
-           git config --global user.email "asepmlnaaa@gmail.com"
-           git clone https://github.com/nadinsylaa/Gengkapak-Kernel Gengkapak
-           cd Gengkapak
-           wget https://raw.githubusercontent.com/nadinsylaa/MyScripts/memerlin/kernel.sh
-           bash kernel.sh
-workflows:
-  version: 2.1
-  cooking:
-    jobs:
-      - compile
+  build:
+    docker:
+      - image: hdrjt/aosp:latest
+    steps:
+      - run: git config --global user.name "nadinsylaa"
+      - run: git config --global user.email "asepmlnaaa@gmail.com"
+      - run: git clone --depth 1 "https://github.com/nadinsylaa/Gengkapak" --branch "$CIRCLE_BRANCH" .
+      - run: wget https://raw.githubusercontent.com/nadinsylaa/MyScripts/memerlin/kernel.sh
+      - run: bash kernel.sh
